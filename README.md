@@ -1,37 +1,115 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# DevLog 
+
+A developer journaling app to track what you build, learn, and struggle with every day. 
+
+## Features
+
+- GitHub OAuth authentication
+- Write and save daily developer journal entries
+- Tag entries by topic (React, TypeScript, Bug Fix, etc.)
+- Track your mood for each session
+- AI-powered entry summaries *(coming soon)*
+- Personal dashboard with stats *(coming soon)*
+
+## Tech Stack
+
+| Layer | Technology |
+|---|---|
+| Frontend | Next.js 14, React, TypeScript |
+| Styling | Bootstrap 5 |
+| Auth | NextAuth.js (GitHub OAuth) |
+| ORM | Prisma 7 |
+| Database | PostgreSQL (Neon) |
+| AI | OpenAI API *(coming soon)* |
+| Deployment | Vercel *(coming soon)* |
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- Node.js 18+
+- A [Neon](https://neon.tech) PostgreSQL database
+- A GitHub OAuth App ([create one here](https://github.com/settings/developers))
+- An OpenAI API key *(for AI summaries)*
+
+### Installation
+
+1. Clone the repository
+   ```bash
+   git clone https://github.com/yourusername/devlog.git
+   cd devlog
+   ```
+
+2. Install dependencies
+   ```bash
+   npm install
+   ```
+
+3. Set up environment variables — create a `.env` file at the root:
+   ```
+   DATABASE_URL=your_neon_connection_string
+   NEXTAUTH_SECRET=your_nextauth_secret
+   NEXTAUTH_URL=http://localhost:3000
+   GITHUB_ID=your_github_oauth_app_id
+   GITHUB_SECRET=your_github_oauth_app_secret
+   ```
+
+4. Push the database schema
+   ```bash
+   npx prisma db push
+   ```
+
+5. Run the development server
+   ```bash
+   npm run dev
+   ```
+
+6. Open [http://localhost:3000](http://localhost:3000)
+
+## Project Structure
+
+```
+src/
+├── app/
+│   ├── layout.tsx              # Root layout, Bootstrap, SessionProvider
+│   ├── page.tsx                # Sign in page
+│   ├── (app)/
+│   │   ├── layout.tsx          # Auth guard, Sidebar layout
+│   │   └── new/
+│   │       └── page.tsx        # New entry form
+│   └── api/
+│       ├── auth/[...nextauth]/ # NextAuth route handler
+│       └── entries/
+│           └── route.ts        # GET and POST entry endpoints
+├── components/
+│   ├── Providers.tsx           # SessionProvider wrapper
+│   └── Sidebar.tsx             # Navigation sidebar
+├── lib/
+│   ├── auth.ts                 # NextAuth config
+│   └── prisma.ts               # Prisma client
+└── types/
+    └── index.ts                # TypeScript interfaces
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Database Schema
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+The app uses four models:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **User** — stores profile info from GitHub OAuth
+- **Entry** — journal entries with title, content, mood, and tags
+- **Account** — links OAuth providers to users (managed by NextAuth)
+- **Session** — active user sessions (managed by NextAuth)
 
-## Learn More
+## Notes for Developers
 
-To learn more about Next.js, take a look at the following resources:
+- Prisma 7 does not use `url = env("DATABASE_URL")` in `schema.prisma` — the connection string lives in `prisma.config.ts`
+- Always run `npx prisma generate` after schema changes
+- Import Prisma client with curly braces: `import { prisma } from '@/lib/prisma'`
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Roadmap
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
-# devlog
+- [ ] All entries list page
+- [ ] Individual entry view
+- [ ] AI-powered entry summaries using OpenAI
+- [ ] Dashboard with writing stats
+- [ ] Vercel deployment
