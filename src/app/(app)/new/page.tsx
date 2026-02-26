@@ -67,7 +67,7 @@ export default function NewEntryPage() {
         }
 
         return (
-            <div style={{ maxWidth: 720 }}>
+            <div className="container py-4" style={{ maxWidth: '720px' }}>
             <h2 className="fw-bold mb-1">New Entry</h2>
             <p className="text-secondary mb-4">What did you work on today?</p>
 

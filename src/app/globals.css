@@ -40,3 +40,25 @@ a {
     color-scheme: dark;
   }
 }
+
+.hover-card {
+  transition: border-color 0.2s ease, transform 0.1s ease;
+}
+.hover-card:hover {
+  border-color: #6c757d !important;
+  transform: translateY(-2px);
+}
+
+body {
+  background-color: #212529;
+}
+
+:root {
+  --color-bg: #ffffff;
+  --color-sidebar: #f7f7f5;
+  --color-border: #e9e9e7;
+  --color-border-bold: #c0c0bc;
+  --color-text-primary: #1a1a1a;
+  --color-text-secondary: #6b6b6b;
+  --color-text-muted: #9b9b9b;
+}
