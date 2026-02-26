@@ -35,7 +35,7 @@ export default async function EntriesPage() {
   })
 
   return (
-    <div className="container py-4" style={{ maxWidth: '720px' }}>
+    <div className="container py-4" style={{ maxWidth: '900px'  }}>
 
       {/* Page header */}
       <div className="d-flex justify-content-between align-items-center mb-4">

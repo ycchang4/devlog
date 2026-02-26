@@ -3,6 +3,7 @@ import { getServerSession } from 'next-auth'
 import { authOptions } from '@/lib/auth'
 import Sidebar from '@/components/Sidebar'
 
+
 export default async function AppLayout({
   children,
 }: {
@@ -16,10 +17,10 @@ export default async function AppLayout({
 
   return (
     <div className="d-flex" style={{ minHeight: '100vh', width: '100%' }}>
-      <Sidebar />
-      <main className="flex-grow-1 p-4" style={{ minHeight: '100vh' }}>
-        {children}
-      </main>
-    </div>
+  <Sidebar />
+  <main className="flex-grow-1 p-4" style={{ minHeight: '100vh', backgroundColor: 'var(--color-bg)' }}>
+    {children}
+  </main>
+</div>
   )
 }

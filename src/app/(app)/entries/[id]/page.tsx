@@ -38,7 +38,7 @@ export default async function EntryPage({ params }: { params: Promise<{ id: stri
   if (entry.userId !== user.id) notFound()
 
   return (
-    <div className="container py-4" style={{ maxWidth: '720px' }}>
+    <div className="container py-4" style={{ maxWidth: '900px' }}>
 
       {/* Back button */}
       <Link

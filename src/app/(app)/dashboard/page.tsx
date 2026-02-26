@@ -28,7 +28,7 @@ export default async function DashboardPage() {
 
   // 2. Current streak — how many consecutive days ending today have an entry
   const todayStr = new Date().toISOString().slice(0, 10)
-  const entryDates = new Set(entries.map(e => e.createdAt.toISOString().slice(0, 10)))
+  const entryDates = new Set(entries.map((e: { createdAt: Date; mood: string | null }) => e.createdAt.toISOString().slice(0, 10)))
 
   let streak = 0
   const cursor = new Date()

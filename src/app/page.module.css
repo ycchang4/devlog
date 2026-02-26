@@ -126,14 +126,11 @@ a.secondary {
   .logo {
     filter: invert();
   }
-
   .page {
-    --background: #000;
+    --background: #faf9f7;   
     --foreground: #000;
-
     --text-primary: #ededed;
     --text-secondary: #999;
-
     --button-primary-hover: #ccc;
     --button-secondary-hover: #1a1a1a;
     --button-secondary-border: #1a1a1a;
