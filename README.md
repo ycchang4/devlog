@@ -8,8 +8,9 @@ A developer journaling app to track what you build, learn, and struggle with eve
 - Write and save daily developer journal entries
 - Tag entries by topic (React, TypeScript, Bug Fix, etc.)
 - Track your mood for each session
+- Personal dashboard with stats
 - AI-powered entry summaries *(coming soon)*
-- Personal dashboard with stats *(coming soon)*
+ 
 
 ## Tech Stack
 
