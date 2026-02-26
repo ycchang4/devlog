@@ -102,7 +102,7 @@ export default async function EntryPage({ params }: { params: Promise<{ id: stri
             className="d-flex gap-2 flex-wrap mt-4 pt-3"
             style={{ borderTop: '1px solid #e9e9e7' }}
           >
-            {entry.tags.map((tag) => (
+            {entry.tags.map((tag : string) => (
               <span
                 key={tag}
                 className="badge"
