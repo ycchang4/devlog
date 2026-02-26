@@ -20,6 +20,15 @@ const moodColors: Record<string, string> = {
   '😓 Struggling': 'bg-danger',
 }
 
+interface Entry {
+  id: string
+  title: string
+  content: string
+  createdAt: Date
+  mood: string | null
+  tags: string[]
+}
+
 export default async function EntriesPage() {
   const session = await getServerSession(authOptions)
   if (!session?.user?.email) redirect('/')
@@ -29,13 +38,13 @@ export default async function EntriesPage() {
   })
   if (!user) redirect('/')
 
-  const entries = await prisma.entry.findMany({
+  const entries: Entry[] = await prisma.entry.findMany({
     where: { userId: user.id },
     orderBy: { createdAt: 'desc' },
   })
 
   return (
-    <div className="container py-4" style={{ maxWidth: '900px'  }}>
+    <div className="container py-4" style={{ maxWidth: '900px' }}>
 
       {/* Page header */}
       <div className="d-flex justify-content-between align-items-center mb-4">
@@ -47,12 +56,12 @@ export default async function EntriesPage() {
           href="/new"
           className="btn btn-sm"
           style={{
-          border: '1px solid #c0c0bc',
-          color: '#1a1a1a',
-          backgroundColor: '#ffffff',
-          fontWeight: 600,
-          borderRadius: '6px',
-        }}
+            border: '1px solid #c0c0bc',
+            color: '#1a1a1a',
+            backgroundColor: '#ffffff',
+            fontWeight: 600,
+            borderRadius: '6px',
+          }}
         >
           + New Entry
         </Link>
@@ -70,7 +79,7 @@ export default async function EntriesPage() {
 
       {/* Entry cards */}
       <div className="d-flex flex-column gap-2">
-        {entries.map((entry) => (
+        {entries.map((entry: Entry) => (
           <Link
             key={entry.id}
             href={`/entries/${entry.id}`}
@@ -106,7 +115,7 @@ export default async function EntriesPage() {
               {/* Bottom row: tags + date */}
               <div className="d-flex justify-content-between align-items-center">
                 <div className="d-flex gap-1 flex-wrap">
-                  {entry.tags.map((tag) => (
+                  {entry.tags.map((tag: string) => (
                     <span
                       key={tag}
                       className="badge"
