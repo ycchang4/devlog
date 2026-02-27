@@ -2,6 +2,8 @@
 
 A developer journaling app to track what you build, learn, and struggle with every day. 
 
+[Live Demo](https://your-vercel-url.vercel.app)
+
 ## Features
 
 - GitHub OAuth authentication
