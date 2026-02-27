@@ -103,7 +103,7 @@ export default async function LandingPage() {
             {/* Footer */}
             <footer style={{ padding: '24px 40px', borderTop: '1px solid #e9e9e7', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                 <span style={{ fontWeight: 600, fontSize: '0.9rem', color: '#1a1a1a' }}>DevLog</span>
-                <span style={{ fontSize: '0.8rem', color: '#9b9b9b' }}>Built with Next.js · Powered by you</span>
+                <span style={{ fontSize: '0.8rem', color: '#9b9b9b' }}>Built with Next.js · Made with 💙</span>
             </footer>
 
         </div>
