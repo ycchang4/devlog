@@ -2,7 +2,7 @@
 
 A developer journaling app to track what you build, learn, and struggle with every day. 
 
-[Live Demo](https://devlog-z4e6.vercel.app)
+[Live Demo](https://devlog-z4e6.vercel.app](https://devlog-woad.vercel.app)
 
 ## Features
 
