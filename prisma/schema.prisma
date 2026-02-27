@@ -7,14 +7,15 @@ datasource db {
 }
 
 model User {
-  id       String    @id @default(cuid())
-  name     String?
-  email    String    @unique
+  id            String         @id @default(cuid())
+  name          String?
+  email         String         @unique
   emailVerified DateTime?
-  image    String?
-  entries  Entry[]
-  accounts Account[]
-  sessions Session[]
+  image         String?
+  entries       Entry[]
+  accounts      Account[]
+  sessions      Session[]
+  weeklySummaries WeeklySummary[]
 }
 
 model Entry {
@@ -27,6 +28,17 @@ model Entry {
   updatedAt DateTime @updatedAt
   userId    String
   user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model WeeklySummary {
+  id        String   @id @default(cuid())
+  weekStart DateTime // Monday of that week, normalized to midnight UTC
+  summary   String
+  createdAt DateTime @default(now())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, weekStart]) // one summary per user per week
 }
 
 model Account {
